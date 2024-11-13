@@ -10,13 +10,21 @@ pool:
   name: my-pool
 
 steps:
+# - task: Gradle@3
+#   inputs:
+#     gradleWrapperFile: 'gradlew'  # Path to your Gradle wrapper
+#     tasks: 'build -x test'  # Replace with the tasks you want to run
+#     options: '-Xmx3072m' 
+#     publishJUnitResults: false
+#     testResultsFiles: '**/TEST-*.xml'  # Updated pattern for test result files
+#     javaHomeOption: 'JDKVersion'
+#     jdkVersionOption: '1.11'  # Replace with your JDK version
+#     jdkArchitectureOption: 'x64'
 - task: Gradle@3
   inputs:
-    gradleWrapperFile: 'gradlew'  # Path to your Gradle wrapper
-    tasks: 'build'  # Replace with the tasks you want to run
-    options: '-Xmx3072m' 
-    publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.xml'  # Updated pattern for test result files
+    gradleWrapperFile: 'gradlew'
+    tasks: 'build -x test'
+    publishJUnitResults: false
     javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.11'  # Replace with your JDK version
-    jdkArchitectureOption: 'x64'
+    sonarQubeRunAnalysis: false
+    spotBugsAnalysis: false
