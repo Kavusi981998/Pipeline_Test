@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  pool: my-pool
+  name: my-pool
 
 steps:
 - task: Gradle@3
